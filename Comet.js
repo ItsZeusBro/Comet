@@ -1,20 +1,15 @@
-import { TikaPrims } from "../TikiTaka/TikaPrims/TikaPrims.js";
 import * as fs from "node:fs";
+
 export class Comet{
     constructor(){
         this.verbose;
         this.flags()
-        this.tp = new TikaPrims()
         this.cometsDir=process.cwd()+'/comets/'
         if (!fs.existsSync(this.cometsDir)){
-            this.tp.mkdr(this.cometsDir)
+            fs.mkdirSync(this.cometsDir)
         }
         this.instance = process.pid
         this.cometFile = this.cometsDir+"comet_"+this.instance+'.comet'
-        if (!fs.existsSync(this.cometFile)){
-            this.tp.create(this.cometFile)
-        }
-
     }
     flags(){
         var flags = process.argv
@@ -25,9 +20,7 @@ export class Comet{
         });
     }
     comet(...data){
-        var obj={}
-        obj[this.cometFile]= data.join()+'\n'
-        this.tp.write(obj)
+        fs.writeFileSync(this.cometFile, data.join()+'\n', {flag:'a'})
         if (this.verbose){
             console.log(data.join(' '))
         }
