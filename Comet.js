@@ -1,4 +1,4 @@
-import { TikaPrims } from "../TikaPrims/TikaPrims.js";
+import { TikaPrims } from "../TikiTaka/TikaPrims/TikaPrims.js";
 import * as fs from "node:fs";
 export class Comet{
     constructor(){
