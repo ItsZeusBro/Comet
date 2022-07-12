@@ -1,6 +1,7 @@
 # Logs
 logs
 *.log
+test/
 comets/
 npm-debug.log*
 yarn-debug.log*
