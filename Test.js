@@ -25,11 +25,23 @@ class TestComet{
                 if(!fs.existsSync(file)){
                     fs.writeFileSync(
                         file, 
-                        "import {Comet} from '../../../Comet.js'\n new Comet().comet('this is a wacky wacky comet')" 
+                        "import {Comet} from '../../../Comet.js'\n new Comet('./comfig.json').comet('this is a wacky wacky comet')" 
                     );
                     
                 }
-                exec("node "+ file)
+                exec("node "+ file, (error, stdout, stderr) => {
+                    if (error) {
+                      throw Error(error.message)
+                    }
+                  
+                    if (stderr) {
+                        throw Error(stderr)
+
+                    }
+                  
+                    console.log(`stdout:\n${stdout}`);
+                  });
+                
             })
         })
     }
