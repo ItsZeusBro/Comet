@@ -1,27 +1,27 @@
+import { exec } from "node:child_process";
 import * as fs from "node:fs";
 class TestComet{
     constructor(){
        this.alphabet= ['a', 'b', 'c', 'd', 'e']
        this.testDir='./test/'
        this.files=[]
-       this.createFiles()
+       this.createNRunFiles()
     }
-    createFiles(){
+    createNRunFiles(){
         this.alphabet.forEach((letter)=>{
             var l1 = this.testDir+letter
             if(!fs.existsSync(l1)){
                 fs.mkdirSync(l1)
             }
         })
-
-        this.alphabet.forEach(()=>{
-            this.alphabet.forEach((letter)=>{
-                var l2 = this.testDir+letter+'/'+letter
-                var file = l2+'.js'
-                if(!fs.existsSync(l2)){
-                    fs.mkdirSync(l2)
+        var dirSentinal;
+        this.alphabet.forEach((l1)=>{
+            this.alphabet.forEach((l2)=>{
+                dirSentinal = this.testDir+l1+'/'+l2+'/'
+                if(!fs.existsSync(dirSentinal)){
+                    fs.mkdirSync(dirSentinal)
                 }
-                this.files.push(file)
+                var file = dirSentinal+l2+'.js'
                 if(!fs.existsSync(file)){
                     fs.writeFileSync(
                         file, 
@@ -29,10 +29,11 @@ class TestComet{
                     );
                     
                 }
-
+                exec("node "+ file)
             })
         })
     }
+
 
 }
 
