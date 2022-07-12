@@ -18,7 +18,7 @@ export class RegFile{
             i++;
         }
         path=path+tokens[tokens.length-1];
-        this.wAppend(data, path);
+        this._wAppend(data, path);
     }
 
     _wAppend(data, path){
@@ -37,7 +37,7 @@ export class RegFile{
 export class Registry{
     constructor(config){
         this.index = this.create_index(config['root'])
-        this.Reg = new RegFile(this.index)
+        this.RegFile = new RegFile(this.index)
     }
 
     create_index(root){

@@ -1,4 +1,4 @@
-import { exec } from "node:child_process";
+import { exec, execSync } from "node:child_process";
 import * as fs from "node:fs";
 class TestComet{
     constructor(){
@@ -29,18 +29,7 @@ class TestComet{
                     );
                     
                 }
-                exec("node "+ file, (error, stdout, stderr) => {
-                    if (error) {
-                      throw Error(error.message)
-                    }
-                  
-                    if (stderr) {
-                        throw Error(stderr)
-
-                    }
-                  
-                    console.log(`stdout:\n${stdout}`);
-                  });
+                execSync("node "+ file, {stdio: 'inherit'})
                 
             })
         })

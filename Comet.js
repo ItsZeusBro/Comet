@@ -1,4 +1,5 @@
 import * as fs from "node:fs";
+import { stderr } from "node:process";
 import { Registry } from "./Source/Registry/Registry.js";
 
 export class Comet{
@@ -39,6 +40,7 @@ export class Comet{
                     .split(this.config.root+'/')[1];
 
         }else{
+            console.log("LOGGGGGGGGGGGGGGGGGGGGGGGG",stack)
             return stack[3]
                     .split('file://')[1]
                     .split(":")[0]
