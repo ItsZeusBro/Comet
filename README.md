@@ -1,4 +1,4 @@
-# Comet (It's a space rock. It does nothing)
+# Comet (A fascinating thing that actually does nothing at all)
 
 ![DangerousComet](https://github.com/ItsZeusBro/Comet/blob/c0aef7561bbff652f689129331de6aa83d58434f/dangerousComet.png)
 
